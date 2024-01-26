@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EventController;
+use App\Models\Event;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,9 +18,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-// Route::get('/', function(){
-//     return view('events.index');
-// });
+Route::get('/', [EventController::class,'index']);
 Route::resource('events', \App\Http\Controllers\EventController::class);
 Route::resource('attend', App\Http\Controllers\AttendeeController::class);
 
