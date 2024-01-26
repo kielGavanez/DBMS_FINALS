@@ -19,7 +19,9 @@
             <input type="date" name="date" value="{{$event->date}}" placeholder="date" required class="p-3 border-solid border-2 border-gray-200 rounded " autocomplete="off">
             <input type="text" name="location" value="{{$event->location}}" placeholder="location" required class="p-3 border-solid border-2 border-gray-200 rounded " autocomplete="off">
             <button type="submit" class="p-2  mt-3 bg-cyan-600 text-white rounded hover:bg-cyan-800 font-bold">Save</button>
-            <a href="{{route('events.index')}}" class="p-2  mt-3 bg-cyan-600 text-white rounded hover:bg-cyan-800 font-bold">Back</a>
+            <form action="{{route('events.index')}}" >
+                <button class="p-2  mt-3 bg-cyan-600 text-white rounded hover:bg-cyan-800 font-bold">Back</button>
+            </form>
         </div> 
     </form>
     </div>

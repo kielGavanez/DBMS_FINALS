@@ -7,6 +7,7 @@
     <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Document</title>
+    
 </head>
 <body>
     <div class="text-center mt-10">
@@ -25,25 +26,24 @@
     <table class="table-auto m-auto border-solid border-2 border-gray-200 mt-10">
         <thead class="border-solid border-2 border-gray-200">
             <tr>
-                <th class="border-solid border-2 border-gray-200 w-96 text-center p-2">Event Name(click name)</th>
-                <th class="border-solid border-2 border-gray-200 w-96 text-center p-2">Date</th>
-                <th class="border-solid border-2 border-gray-200 w-96 text-center p-2">Location</th>
-                <th class="border-solid border-2 border-gray-200 w-96 text-center p-2">Action</th>
+                <th class="border-solid border-2 border-gray-200 w-80 text-center p-2">Event Name</th>
+                <th class="border-solid border-2 border-gray-200 w-80 text-center p-2">Date</th>
+                <th class="border-solid border-2 border-gray-200 w-80 text-center p-2">Location</th>
+                <th class="border-solid border-2 border-gray-200 w-40">Action</th>
             </tr>
         </thead>
         <tbody>
             @forelse ($events as $q)
                 <tr>
-                    <td class="border-solid border-2 border-gray-200 pt-5 pb-5 text-left p-2 col">
-                        <a href="{{route('events.show',[$q->id])}}">{{$q->eventName}}</a>
-                    </td>
-                    <td class="border-solid border-2 border-gray-200 pt-5 pb-5 text-left p-2 col">{{$q->date}}</td>
-                    <td class="border-solid border-2 border-gray-200 pt-5 pb-5 text-left p-2 col">{{$q->location}}</td>
-                    <td class="border-solid border-2 border-gray-200 pt-5 pb-5 text-left p-2 col">
-                        <a href="{{route('events.edit',[$q->id])}}" class="bg-blue-400 p-1 text-white rounded hover:bg-blue-600 text-sm font-bolder">Edit</a>
-                        <form action="{{route('events.destroy',[$q->id])}}" method="POST">
+                    <td class="border-solid border-2 border-gray-200 pt-5 pb-5 text-center p-2 col">{{$q->eventName}}</td>
+                    <td class="border-solid border-2 border-gray-200 pt-5 pb-5 text-center p-2 col">{{$q->date}}</td>
+                    <td class="border-solid border-2 border-gray-200 pt-5 pb-5 text-center p-2 col">{{$q->location}}</td>
+                    <td class="border-solid border-2 border-gray-200 p-2">
+                        <form action="{{route('events.destroy',[$q->id])}}" method="POST" >
                             @csrf
                             @method('DELETE')
+                            <a href="{{route('events.show',[$q->id])}}" class="bg-green-400 p-1 text-white rounded hover:bg-green-600 text-sm font-bolder">View</a>
+                            <a href="{{route('events.edit',[$q->id])}}" class="bg-blue-400 p-1 text-white rounded hover:bg-blue-600 text-sm font-bolder">Edit</a>
                             <button class="bg-red-400 p-1 text-white rounded hover:bg-red-600 text-sm font-bolder" type="submit">Delete</button>
                         </form>
                     </td>
