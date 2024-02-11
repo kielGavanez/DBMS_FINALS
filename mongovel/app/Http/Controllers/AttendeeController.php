@@ -57,7 +57,8 @@ class AttendeeController extends Controller
             abort(404);
         }
         $attendees = Attendee::where('event_id',$request->event_id)->get();
-        return view('events.show',[$request->event_id])->with(compact('attendee','event','attend'));
+        // return view('events.show',[$request->event_id])->with(compact('attendee','event','attend'));
+        return redirect()->route('events.show',[$request->event_id]);
 
     }
 
